@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/LowPoly.unity
+- path: Assets/Scenes/develop.unity
   isLoaded: 1
   isActive: 1

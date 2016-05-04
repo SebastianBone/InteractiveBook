@@ -1,0 +1,612 @@
+fileFormatVersion: 2
+guid: a5b450a8c42c22c47a4ed3d28ca31662
+timeCreated: 1451538325
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: backLeg1.L
+    100002: backLeg1.R
+    100004: backLeg2.L
+    100006: backLeg2.R
+    100008: backPaw.L
+    100010: backPaw.L_end
+    100012: backPaw.R
+    100014: backPaw.R_end
+    100016: ear.L
+    100018: ear.L_end
+    100020: ear.R
+    100022: ear.R_end
+    100024: Fox
+    100026: //RootNode
+    100028: Fox_Skeleton
+    100030: FoxShirt
+    100032: frontLeg1.L
+    100034: frontLeg1.R
+    100036: frontLeg2.L
+    100038: frontLeg2.R
+    100040: frontPaw.L
+    100042: frontPaw.L_end
+    100044: frontPaw.R
+    100046: frontPaw.R_end
+    100048: Head
+    100050: RootBone
+    100052: Spine.002
+    100054: Tail
+    100056: Tail.001
+    100058: Tail.002
+    100060: Tail.002_end
+    100062: Tail.003
+    400000: backLeg1.L
+    400002: backLeg1.R
+    400004: backLeg2.L
+    400006: backLeg2.R
+    400008: backPaw.L
+    400010: backPaw.L_end
+    400012: backPaw.R
+    400014: backPaw.R_end
+    400016: ear.L
+    400018: ear.L_end
+    400020: ear.R
+    400022: ear.R_end
+    400024: Fox
+    400026: //RootNode
+    400028: Fox_Skeleton
+    400030: FoxShirt
+    400032: frontLeg1.L
+    400034: frontLeg1.R
+    400036: frontLeg2.L
+    400038: frontLeg2.R
+    400040: frontPaw.L
+    400042: frontPaw.L_end
+    400044: frontPaw.R
+    400046: frontPaw.R_end
+    400048: Head
+    400050: RootBone
+    400052: Spine.002
+    400054: Tail
+    400056: Tail.001
+    400058: Tail.002
+    400060: Tail.002_end
+    400062: Tail.003
+    4300000: Fox
+    4300002: FoxShirt
+    7400000: Fox_Skeleton|EmptyAction
+    7400002: Fox_Skeleton|Fox_Cry
+    7400004: Fox_Skeleton|Fox_Fall_Down
+    7400006: Fox_Skeleton|Fox_Falling
+    7400008: Fox_Skeleton|Fox_Idle
+    7400010: Fox_Skeleton|Fox_Idle.001
+    7400012: Fox_Skeleton|Fox_Idle.002
+    7400014: Fox_Skeleton|Fox_Jump_Up
+    7400016: Fox_Skeleton|Fox_Run
+    7400018: Fox_Skeleton|Fox_SkeletonAction
+    7400020: Fox|EmptyAction
+    7400022: Fox|Fox_SkeletonAction
+    9500000: //RootNode
+    13700000: Fox
+    13700002: FoxShirt
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Fox_Skeleton|Fox_Cry
+      takeName: Fox_Skeleton|Fox_Cry
+      firstFrame: 0
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Fox
+        weight: 1
+      - path: Fox_Skeleton
+        weight: 1
+      - path: Fox_Skeleton/RootBone
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L/backLeg2.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L/backLeg2.L/backPaw.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L/backLeg2.L/backPaw.L/backPaw.L_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R/backLeg2.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R/backLeg2.R/backPaw.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R/backLeg2.R/backPaw.R/backPaw.R_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L/frontLeg2.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L/frontLeg2.L/frontPaw.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L/frontLeg2.L/frontPaw.L/frontPaw.L_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R/frontLeg2.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R/frontLeg2.R/frontPaw.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R/frontLeg2.R/frontPaw.R/frontPaw.R_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.L/ear.L_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.R/ear.R_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail/Tail.001
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail/Tail.001/Tail.002
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail/Tail.001/Tail.002/Tail.002_end
+        weight: 1
+      - path: FoxShirt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Fox_Skeleton|Fox_Fall_Down
+      takeName: Fox_Skeleton|Fox_Fall_Down
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Fox
+        weight: 1
+      - path: Fox_Skeleton
+        weight: 1
+      - path: Fox_Skeleton/RootBone
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L/backLeg2.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L/backLeg2.L/backPaw.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L/backLeg2.L/backPaw.L/backPaw.L_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R/backLeg2.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R/backLeg2.R/backPaw.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R/backLeg2.R/backPaw.R/backPaw.R_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L/frontLeg2.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L/frontLeg2.L/frontPaw.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L/frontLeg2.L/frontPaw.L/frontPaw.L_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R/frontLeg2.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R/frontLeg2.R/frontPaw.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R/frontLeg2.R/frontPaw.R/frontPaw.R_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.L/ear.L_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.R/ear.R_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail/Tail.001
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail/Tail.001/Tail.002
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail/Tail.001/Tail.002/Tail.002_end
+        weight: 1
+      - path: FoxShirt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Fox_Skeleton|Fox_Idle
+      takeName: Fox_Skeleton|Fox_Idle
+      firstFrame: 0
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Fox
+        weight: 1
+      - path: Fox_Skeleton
+        weight: 1
+      - path: Fox_Skeleton/RootBone
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L/backLeg2.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L/backLeg2.L/backPaw.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L/backLeg2.L/backPaw.L/backPaw.L_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R/backLeg2.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R/backLeg2.R/backPaw.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R/backLeg2.R/backPaw.R/backPaw.R_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L/frontLeg2.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L/frontLeg2.L/frontPaw.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L/frontLeg2.L/frontPaw.L/frontPaw.L_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R/frontLeg2.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R/frontLeg2.R/frontPaw.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R/frontLeg2.R/frontPaw.R/frontPaw.R_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.L/ear.L_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.R/ear.R_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail/Tail.001
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail/Tail.001/Tail.002
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail/Tail.001/Tail.002/Tail.002_end
+        weight: 1
+      - path: FoxShirt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Fox_Skeleton|Fox_Jump_Up
+      takeName: Fox_Skeleton|Fox_Jump_Up
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Fox
+        weight: 1
+      - path: Fox_Skeleton
+        weight: 1
+      - path: Fox_Skeleton/RootBone
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L/backLeg2.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L/backLeg2.L/backPaw.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L/backLeg2.L/backPaw.L/backPaw.L_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R/backLeg2.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R/backLeg2.R/backPaw.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R/backLeg2.R/backPaw.R/backPaw.R_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L/frontLeg2.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L/frontLeg2.L/frontPaw.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L/frontLeg2.L/frontPaw.L/frontPaw.L_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R/frontLeg2.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R/frontLeg2.R/frontPaw.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R/frontLeg2.R/frontPaw.R/frontPaw.R_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.L/ear.L_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.R/ear.R_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail/Tail.001
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail/Tail.001/Tail.002
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail/Tail.001/Tail.002/Tail.002_end
+        weight: 1
+      - path: FoxShirt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Fox_Skeleton|Fox_Run
+      takeName: Fox_Skeleton|Fox_Run
+      firstFrame: 0
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Fox
+        weight: 1
+      - path: Fox_Skeleton
+        weight: 1
+      - path: Fox_Skeleton/RootBone
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L/backLeg2.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L/backLeg2.L/backPaw.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.L/backLeg2.L/backPaw.L/backPaw.L_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R/backLeg2.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R/backLeg2.R/backPaw.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/backLeg1.R/backLeg2.R/backPaw.R/backPaw.R_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L/frontLeg2.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L/frontLeg2.L/frontPaw.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.L/frontLeg2.L/frontPaw.L/frontPaw.L_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R/frontLeg2.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R/frontLeg2.R/frontPaw.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/frontLeg1.R/frontLeg2.R/frontPaw.R/frontPaw.R_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.L
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.L/ear.L_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.R
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Spine.002/Head/ear.R/ear.R_end
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail/Tail.001
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail/Tail.001/Tail.002
+        weight: 1
+      - path: Fox_Skeleton/RootBone/Tail.003/Tail/Tail.001/Tail.002/Tail.002_end
+        weight: 1
+      - path: FoxShirt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
