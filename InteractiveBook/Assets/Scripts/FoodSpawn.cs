@@ -3,21 +3,21 @@ using System.Collections;
 
 public class FoodSpawn : MonoBehaviour {
 
-	public Transform food_Apple;
+	public GameObject food_Apple;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	private int index;
+	private Vector3 newPosition;
+	private float positionZ;
+
+	void Start(){
+
+		newPosition = transform.position;
 	}
 
 	public void SpawnFood(){
 
-		Instantiate (food_Apple, transform.position, Quaternion.identity);
-	
+		positionZ = Random.Range (16, 21);
+		newPosition.z = positionZ;
+		Instantiate (food_Apple, newPosition, Quaternion.identity);
 	}
 }
