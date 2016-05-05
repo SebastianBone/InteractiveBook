@@ -8,6 +8,7 @@ TagManager:
   - explore
   - spawn
   - fox
+  - house
   layers:
   - Default
   - TransparentFX

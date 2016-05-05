@@ -10,11 +10,13 @@ public class MoveTo : MonoBehaviour {
 	public int amountOfFood = 0;
 	public int maxAmountOfFood = 10;
 
+	private GameObject house;
 	private GameObject feedingArea;
 	private GameObject[] explorePositions;
 	private int explorePositionsSize;
 	private int randomPosition;
 	private float waitTime;
+	private float feedTime = 2f;
 	private bool isExplorePosition = false;
 
 
@@ -28,7 +30,6 @@ public class MoveTo : MonoBehaviour {
 		}
 		waitTime = Random.Range(3, 8);
 		feedingArea = GameObject.Find ("Feeder");
-
 	}
 
 	void Update() {
@@ -37,7 +38,8 @@ public class MoveTo : MonoBehaviour {
 			agent.SetDestination (fruit.transform.position);
 		}
 
-		if (amountOfFood >= maxAmountOfFood) {
+		if (amountOfFood >= maxAmountOfFood && otherAnimal != null) {
+
 			agent.SetDestination (otherAnimal.transform.position);
 		}
 
@@ -58,9 +60,12 @@ public class MoveTo : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision){
-		if (collision.collider == otherAnimal.GetComponent<SphereCollider> () && amountOfFood >= 10) {
-			Instantiate (animalChild, otherAnimal.transform.position, Quaternion.identity);
-			amountOfFood = 0;
+
+		if (otherAnimal != null && animalChild != null) {
+			if (collision.collider == otherAnimal.GetComponent<SphereCollider> () && amountOfFood >= 10) {
+				Instantiate (animalChild, transform.position, Quaternion.identity);
+				amountOfFood = 0;
+			}
 		}
 	}
 
@@ -80,7 +85,12 @@ public class MoveTo : MonoBehaviour {
 		
 		if (collider == feedingArea.GetComponent<BoxCollider> ()) {
 			Destroy (fruit, 2f);
-			amountOfFood++;
+			feedTime -= Time.deltaTime;
+
+			if (feedTime <= 0) {
+				amountOfFood++;
+				feedTime = 2f;
+			}
 		}
 	}
 }
