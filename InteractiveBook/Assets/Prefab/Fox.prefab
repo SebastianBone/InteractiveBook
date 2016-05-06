@@ -947,7 +947,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruit: {fileID: 108050, guid: b2ee30e8a092142678dfbd6e098e62a5, type: 2}
-  feedingArea: {fileID: 0}
+  otherAnimal: {fileID: 0}
+  animalChild: {fileID: 131680, guid: 6d1ea8acd729443adafa9a25c6575a13, type: 2}
+  amountOfFood: 0
+  maxAmountOfFood: 10
+  idle: {fileID: 7400008, guid: a5b450a8c42c22c47a4ed3d28ca31662, type: 3}
+  run: {fileID: 7400016, guid: a5b450a8c42c22c47a4ed3d28ca31662, type: 3}
+  cry: {fileID: 7400002, guid: a5b450a8c42c22c47a4ed3d28ca31662, type: 3}
+  jump: {fileID: 7400014, guid: a5b450a8c42c22c47a4ed3d28ca31662, type: 3}
+  fall: {fileID: 7400004, guid: a5b450a8c42c22c47a4ed3d28ca31662, type: 3}
 --- !u!135 &13521154
 SphereCollider:
   m_ObjectHideFlags: 1
