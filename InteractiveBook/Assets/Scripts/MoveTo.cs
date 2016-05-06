@@ -1,15 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Linq.Expressions;
+using UnityEngine.SocialPlatforms;
 
-public class MoveTo : MonoBehaviour {
+public class MoveTo : MonoBehaviour
+{
 
 	// Public properties
 
-	public GameObject fruit; 
+	/// <summary>
+	/// The fruit.
+	/// </summary>
+	public GameObject fruit;
+	/// <summary>
+	/// The other animal.
+	/// </summary>
 	public GameObject otherAnimal;
+	/// <summary>
+	/// The animal child.
+	/// </summary>
 	public GameObject animalChild;
+	/// <summary>
+	/// Initial amount of food.
+	/// </summary>
 	public int amountOfFood = 0;
+	/// <summary>
+	/// The max amount of food.
+	/// </summary>
 	public int maxAmountOfFood = 10;
 
 	// Animation name getter.
@@ -20,16 +37,34 @@ public class MoveTo : MonoBehaviour {
 	public AnimationClip fall;
 
 	// Private properties
+	/// <summary>
+	/// The navigation mesh agent.
+	/// </summary>
 	private NavMeshAgent agent;
+	/// <summary>
+	/// The hous of animalse.
+	/// </summary>
 	private GameObject house;
+	/// <summary>
+	/// The feeding area. Place where animals eat.
+	/// </summary>
 	private GameObject feedingArea;
+	/// <summary>
+	/// The random explore positions on the map.
+	/// </summary>
 	private GameObject[] explorePositions;
-	private int explorePositionsSize;
+	/// <summary>
+	/// The random position initgar for generating Range().
+	/// </summary>
 	private int randomPosition;
-	private float waitTime;
-	private float feedTime = 1f;
+	/// <summary>
+	/// The wait time on random explore position.
+	/// </summary>
+	private float waitTime = Random.Range (3, 8);
+	private float feedTime = 2f;
 	private bool isExplorePosition = false;
 	private bool IsEating = false;
+	private bool isSated = false;
 
 	//Animation
 	private Animator anim;
@@ -37,17 +72,20 @@ public class MoveTo : MonoBehaviour {
 
 	void Start () {
 		anim = gameObject.GetComponent<Animator> ();
-		agent = GetComponent<NavMeshAgent>();
+		agent = GetComponent<NavMeshAgent> ();
 		explorePositions = GameObject.FindGameObjectsWithTag ("explore");
-		if (explorePositions != null) {
-			explorePositionsSize = explorePositions.Length;
-			randomPosition = Random.Range (0, explorePositionsSize);
-		}
-		waitTime = Random.Range(3, 8);
+		if (explorePositions != null)
+			randomPosition = Random.Range (0, explorePositions.Length);
+		waitTime = Random.Range (3, 8);
 		feedingArea = GameObject.Find ("Feeder");
+		house = GameObject.FindGameObjectWithTag ("house");
+
 	}
 
-	void Update() {
+	void Update () {
+
+		fruit = GameObject.FindGameObjectWithTag ("food");
+
 
 		if (!IsEating && !isExplorePosition) {
 			anim.Play (run.name);
@@ -55,8 +93,7 @@ public class MoveTo : MonoBehaviour {
 			anim.Play (idle.name);
 		}
 
-		fruit = GameObject.FindGameObjectWithTag ("food");
-		if (fruit != null) {
+		if (fruit != null && !isSated) {
 			agent.SetDestination (fruit.transform.position);
 			// Run to the food container
 			if (!IsEating) {
@@ -71,34 +108,44 @@ public class MoveTo : MonoBehaviour {
 
 		if (explorePositions != null && fruit == null) {
 
-			agent.SetDestination (explorePositions[randomPosition].transform.position);
+			agent.SetDestination (explorePositions [randomPosition].transform.position);
 
 			if (isExplorePosition) {
 				waitTime -= Time.deltaTime;
 
 				if (waitTime <= 0) {
-					randomPosition = Random.Range (0, explorePositionsSize);
-					waitTime = Random.Range(3, 8);
+					randomPosition = Random.Range (0, explorePositions.Length);
+					waitTime = Random.Range (3, 8);
 					isExplorePosition = false;
 				}
 			}
-		}			
+		}
+
+		if (isSated) {
+			agent.SetDestination (house.transform.position);
+			
+		}
 	}
 
-	void OnCollisionEnter(Collision collision){
-
+	void OnCollisionEnter (Collision collision) {
 		if (otherAnimal != null && animalChild != null) {
 			if (collision.collider == otherAnimal.GetComponent<SphereCollider> () && amountOfFood >= 10) {
-				Instantiate (animalChild, transform.position, Quaternion.identity);
+				
+				isSated = true;
+
 				amountOfFood = 0;
 			}
 		}
 	}
 
-	void OnTriggerEnter(Collider collider){
-		
-		if(collider == explorePositions[randomPosition].GetComponent<SphereCollider>()){
+	void OnTriggerEnter (Collider collider) {
+		if (collider == explorePositions [randomPosition].GetComponent<SphereCollider> ()) {
 			isExplorePosition = true;
+		}
+
+		if (collider == house.GetComponent<SphereCollider> ()) {
+			isSated = false;
+			Instantiate (animalChild, transform.position, Quaternion.identity);
 		}
 
 		if (collider == feedingArea.GetComponent<BoxCollider> ()) {
@@ -107,10 +154,14 @@ public class MoveTo : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerStay(Collider collider){
-		
+	void OnTriggerExit() {
+		IsEating = false;
+		isExplorePosition = false;
+	}
+
+	void OnTriggerStay (Collider collider) {
 		if (collider == feedingArea.GetComponent<BoxCollider> ()) {
-			Destroy (fruit, 1.5f);
+			Destroy (fruit, 2f);
 			IsEating = true;
 			feedTime -= Time.deltaTime;
 

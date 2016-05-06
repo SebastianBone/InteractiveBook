@@ -1,18 +1,2 @@
 Base path: /Applications/Unity/Unity.app/Contents
 Cmd: getPlatforms
-Cmd: preprocess
-  insize=665 outsize=665 ok=1
-Cmd: preprocess
-  insize=808 outsize=808 ok=1
-Cmd: preprocess
-  insize=521 outsize=521 ok=1
-Cmd: preprocess
-  insize=892 outsize=259 ok=1
-Cmd: preprocess
-  insize=672 outsize=672 ok=1
-Cmd: preprocess
-  insize=890 outsize=890 ok=1
-Cmd: preprocess
-  insize=290 outsize=290 ok=1
-Cmd: preprocess
-  insize=773 outsize=773 ok=1
