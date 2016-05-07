@@ -51,8 +51,7 @@
      <Compile Include="Assets\Scripts\CharakterController.cs" />
      <Compile Include="Assets\Scripts\FoodController.cs" />
      <Compile Include="Assets\Scripts\FoodSpawn.cs" />
-     <Compile Include="Assets\Scripts\MouseController.cs" />
-     <Compile Include="Assets\Scripts\MoveTo.cs" />
+     <Compile Include="Assets\Scripts\FoxSzeneController.cs" />
      <Compile Include="Assets\Scripts\OwlController.cs" />
      <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />
      <Compile Include="Assets\Vuforia\Scripts\CloudRecoBehaviour.cs" />
@@ -114,7 +113,7 @@
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="Vuforia.UnityExtensions">
- <HintPath>/Users/sebastianbohn/Developer/InteractiveBook/InteractiveBook/Assets/Vuforia/Scripts/Internal/Vuforia.UnityExtensions.dll</HintPath>
+ <HintPath>/Users/marko/Development/InteractiveBook/InteractiveBook/Assets/Vuforia/Scripts/Internal/Vuforia.UnityExtensions.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
