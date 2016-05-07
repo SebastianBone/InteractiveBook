@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\CharakterController.cs" />
      <Compile Include="Assets\Scripts\FoodController.cs" />
      <Compile Include="Assets\Scripts\FoodSpawn.cs" />
+     <Compile Include="Assets\Scripts\MouseController.cs" />
      <Compile Include="Assets\Scripts\MoveTo.cs" />
      <Compile Include="Assets\Scripts\OwlController.cs" />
      <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />

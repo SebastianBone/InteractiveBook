@@ -60,7 +60,7 @@ public class MoveTo : MonoBehaviour
 	/// <summary>
 	/// The wait time on random explore position.
 	/// </summary>
-	private float waitTime = Random.Range (3, 8);
+	private float waitTime;
 	private float feedTime = 2f;
 	private bool isExplorePosition = false;
 	private bool IsEating = false;

@@ -36,7 +36,7 @@ public class OwlController: MonoBehaviour
 	/// <summary>
 	/// The random explore positions on the map.
 	/// </summary>
-	private GameObject[] explorePositions;
+	private GameObject[] owlExplorePositions;
 	/// <summary>
 	/// The random position initgar for generating Range().
 	/// </summary>
@@ -44,7 +44,7 @@ public class OwlController: MonoBehaviour
 	/// <summary>
 	/// The wait time on random explore position.
 	/// </summary>
-	private float waitTime = Random.Range (3, 8);
+	private float waitTime;
 	//private float feedTime = 2f;
 	private bool isExplorePosition = false;
 	private bool IsEating = false;
@@ -57,9 +57,9 @@ public class OwlController: MonoBehaviour
 	void Start () {
 		anim = gameObject.GetComponent<Animator> ();
 		agent = GetComponent<NavMeshAgent> ();
-		explorePositions = GameObject.FindGameObjectsWithTag ("explore");
-		if (explorePositions != null)
-			randomPosition = Random.Range (0, explorePositions.Length);
+		owlExplorePositions = GameObject.FindGameObjectsWithTag ("owlExplore");
+		if (owlExplorePositions != null)
+			randomPosition = Random.Range (0, owlExplorePositions.Length);
 		waitTime = Random.Range (3, 8);
 
 	}
@@ -84,15 +84,15 @@ public class OwlController: MonoBehaviour
 			}
 		}
 
-		if (explorePositions != null && mouse == null) {
+		if (owlExplorePositions != null && mouse == null) {
 
-			agent.SetDestination (explorePositions [randomPosition].transform.position);
+			agent.SetDestination (owlExplorePositions [randomPosition].transform.position);
 
 			if (isExplorePosition) {
 				waitTime -= Time.deltaTime;
 
 				if (waitTime <= 0) {
-					randomPosition = Random.Range (0, explorePositions.Length);
+					randomPosition = Random.Range (0, owlExplorePositions.Length);
 					waitTime = Random.Range (3, 8);
 					isExplorePosition = false;
 				}
@@ -109,7 +109,7 @@ public class OwlController: MonoBehaviour
 	}
 
 	void OnTriggerEnter (Collider collider) {
-		if (collider == explorePositions [randomPosition].GetComponent<SphereCollider> ()) {
+		if (collider == owlExplorePositions [randomPosition].GetComponent<SphereCollider> ()) {
 			isExplorePosition = true;
 		}
 

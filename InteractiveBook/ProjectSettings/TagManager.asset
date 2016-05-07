@@ -9,6 +9,9 @@ TagManager:
   - spawn
   - fox
   - house
+  - mouse
+  - owlExplore
+  - mouseExplore
   layers:
   - Default
   - TransparentFX
