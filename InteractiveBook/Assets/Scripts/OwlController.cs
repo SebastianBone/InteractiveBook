@@ -9,7 +9,7 @@ public class OwlController: MonoBehaviour
 	// Public properties
 
 	/// <summary>
-	/// The fruit.
+	/// The mouse.
 	/// </summary>
 	public GameObject mouse;
 	/// <summary>
@@ -38,16 +38,17 @@ public class OwlController: MonoBehaviour
 	/// </summary>
 	private GameObject[] owlExplorePositions;
 	/// <summary>
-	/// The random position initgar for generating Range().
+	/// The random position integar for generating Range().
 	/// </summary>
 	private int randomPosition;
 	/// <summary>
 	/// The wait time on random explore position.
 	/// </summary>
 	private float waitTime;
-	private float landingStartingTime = 1f;
+	private float landingStartingTime = 2f;
 	private bool isExplorePosition = false;
 	private bool IsEating = false;
+	private bool isStartingLanding;
 
 	//Animation
 	private Animator anim;
@@ -56,11 +57,12 @@ public class OwlController: MonoBehaviour
 	void Start () {
 		anim = gameObject.GetComponent<Animator> ();
 		agent = GetComponent<NavMeshAgent> ();
+		agent.baseOffset = 0;
 		owlExplorePositions = GameObject.FindGameObjectsWithTag ("owlExplore");
 		if (owlExplorePositions != null)
 			randomPosition = Random.Range (0, owlExplorePositions.Length);
 		waitTime = Random.Range (3, 8);
-
+		isStartingLanding = true;
 	}
 
 	void Update () {
@@ -85,8 +87,19 @@ public class OwlController: MonoBehaviour
 
 		if (owlExplorePositions != null && mouse == null) {
 
-			agent.SetDestination (owlExplorePositions [randomPosition].transform.position);
+			if (isStartingLanding) {
+				landingStartingTime += Time.deltaTime;
 
+				Debug.Log (agent.baseOffset);
+				if (agent.baseOffset > 2f) {
+					agent.baseOffset = 2;
+					isStartingLanding = false;
+				} else {
+					agent.baseOffset = landingStartingTime;	
+				}
+			}
+				
+			agent.SetDestination (owlExplorePositions [randomPosition].transform.position);			
 			if (isExplorePosition) {
 				waitTime -= Time.deltaTime;
 
@@ -94,6 +107,7 @@ public class OwlController: MonoBehaviour
 					randomPosition = Random.Range (0, owlExplorePositions.Length);
 					waitTime = Random.Range (3, 8);
 					isExplorePosition = false;
+					isStartingLanding = true;
 				}
 			}
 		}
@@ -108,24 +122,21 @@ public class OwlController: MonoBehaviour
 	}
 
 	void OnTriggerEnter (Collider collider) {
-//		if (collider == owlExplorePositions [randomPosition].GetComponent<SphereCollider> ()) {
-//
-//			agent.baseOffset = landingStartingTime;
-//			landingStartingTime -= Time.deltaTime;
-//			if(agent.baseOffset == 0){
-//				agent.baseOffset = 0;
-//				isExplorePosition = true;
-//			}
-//		}
+
 	}
 
 	void OnTriggerStay (Collider collider) {
 		if (collider == owlExplorePositions [randomPosition].GetComponent<SphereCollider> ()) {
-			agent.baseOffset = landingStartingTime;
+
+
 			landingStartingTime -= Time.deltaTime;
 			if (agent.baseOffset <= 0) {
 				agent.baseOffset = 0;
 				isExplorePosition = true;
+				isStartingLanding = false;
+			} else {
+				agent.baseOffset = landingStartingTime;
+			
 			}
 		}
 	}
