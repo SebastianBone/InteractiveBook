@@ -15,7 +15,6 @@ public class FoodSpawn : MonoBehaviour {
 	}
 
 	public void SpawnFood(){
-
 		positionZ = Random.Range (16, 21);
 		newPosition.z = positionZ;
 		Instantiate (food_Apple, newPosition, Quaternion.identity);

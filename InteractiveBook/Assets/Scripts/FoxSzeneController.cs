@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Linq.Expressions;
-using UnityEngine.SocialPlatforms;
 
-public class MoveTo : MonoBehaviour
+/// <summary>
+/// Fox szene controller.
+/// </summary>
+public class FoxSzeneController : MonoBehaviour
 {
-
 	// Public properties
 
 	/// <summary>
@@ -29,7 +29,10 @@ public class MoveTo : MonoBehaviour
 	/// </summary>
 	public int maxAmountOfFood = 10;
 
-	// Animation name getter.
+	/// <summary>
+	/// Animation name for diferent animation names.
+	/// Used later as animation name string getter.
+	/// </summary>
 	public AnimationClip idle;
 	public AnimationClip run;
 	public AnimationClip cry;
@@ -60,17 +63,34 @@ public class MoveTo : MonoBehaviour
 	/// <summary>
 	/// The wait time on random explore position.
 	/// </summary>
-	private float waitTime = Random.Range (3, 8);
+	private float waitTime;
+	/// <summary>
+	/// The feed time describes how long should animal eat.
+	/// </summary>
 	private float feedTime = 2f;
+	/// <summary>
+	/// State of explore position. Determinates if position was or should be visited.
+	/// </summary>
 	private bool isExplorePosition = false;
+	/// <summary>
+	/// Boolean flag that determinates if animal has finished eating.
+	/// </summary>
 	private bool IsEating = false;
+	/// <summary>
+	/// Boolean flag that determinates if animals are sated.
+	/// </summary>
 	private bool isSated = false;
 
-	//Animation
+	/// <summary>
+	/// The animator object for controlling animation.
+	/// </summary>
 	private Animator anim;
 
-
-	void Start () {
+	/// <summary>
+	/// Start this instance. Properties initializer.
+	/// </summary>
+	void Start ()
+	{
 		anim = gameObject.GetComponent<Animator> ();
 		agent = GetComponent<NavMeshAgent> ();
 		explorePositions = GameObject.FindGameObjectsWithTag ("explore");
@@ -79,24 +99,28 @@ public class MoveTo : MonoBehaviour
 		waitTime = Random.Range (3, 8);
 		feedingArea = GameObject.Find ("Feeder");
 		house = GameObject.FindGameObjectWithTag ("house");
-
 	}
 
-	void Update () {
-
+	void Update ()
+	{
+		
 		fruit = GameObject.FindGameObjectWithTag ("food");
 
-
+		// Play animation should run either the animal is not eating orn isn't on position to explore.
 		if (!IsEating && !isExplorePosition) {
 			anim.Play (run.name);
+			// Otherwise play idle state.
 		} else {
 			anim.Play (idle.name);
 		}
 
+		// Run to the food container if it has some apples AND anima isn't sated AND dont eat at the moment.
 		if (fruit != null && !isSated) {
+			// Set food container as new position to go to.
 			agent.SetDestination (fruit.transform.position);
 			// Run to the food container
 			if (!IsEating) {
+				// Food container is not position to explore.
 				isExplorePosition = false;
 				anim.Play (run.name);
 			}
@@ -106,60 +130,83 @@ public class MoveTo : MonoBehaviour
 			agent.SetDestination (otherAnimal.transform.position);
 		}
 
+		//If there are positions to explore AND food container is empty (no fruit)..
 		if (explorePositions != null && fruit == null) {
-
+			// go to random genetated position.
 			agent.SetDestination (explorePositions [randomPosition].transform.position);
-
+			// If anima is allready on goal position it should wait there for some time
 			if (isExplorePosition) {
+				// Decrese wait time on every frame.
 				waitTime -= Time.deltaTime;
-
+				// Check if wait delay did end.
 				if (waitTime <= 0) {
+					// Chose new random position to go to.
 					randomPosition = Random.Range (0, explorePositions.Length);
+					//Reset wait time.
 					waitTime = Random.Range (3, 8);
+					// Reset explore position flag for 'run' animation purposes. (See line 108)
 					isExplorePosition = false;
 				}
 			}
 		}
-
+		// If the animal cann not carry any more fruits.
+		if (amountOfFood >= maxAmountOfFood) {
+			isSated = true;
+		}
+		// If animals are sated, they should go home.
 		if (isSated) {
 			agent.SetDestination (house.transform.position);
 			
 		}
 	}
 
-	void OnCollisionEnter (Collision collision) {
-		if (otherAnimal != null && animalChild != null) {
-			if (collision.collider == otherAnimal.GetComponent<SphereCollider> () && amountOfFood >= 10) {
-				
-				isSated = true;
-
-				amountOfFood = 0;
-			}
-		}
-	}
-
-	void OnTriggerEnter (Collider collider) {
+	/// <summary>
+	/// Raises the trigger enter event.
+	/// </summary>
+	/// <param name="collider">Collider.</param>
+	void OnTriggerEnter (Collider collider)
+	{
+		//Look if there are some exploration places near by.
 		if (collider == explorePositions [randomPosition].GetComponent<SphereCollider> ()) {
+			//Explore them!
 			isExplorePosition = true;
 		}
 
-		if (collider == house.GetComponent<SphereCollider> ()) {
-			isSated = false;
+		//If Animal is on the way home sated.
+		if (collider == house.GetComponent<BoxCollider> () && amountOfFood >= maxAmountOfFood) {
+			// Make some babies.
 			Instantiate (animalChild, transform.position, Quaternion.identity);
+			// Reset
+			amountOfFood = 0;
+			isSated = false;
+			IsEating = false;
 		}
-
-		if (collider == feedingArea.GetComponent<BoxCollider> ()) {
-			Destroy (fruit);
+		// Let's eat some apples.
+		if (collider == feedingArea.GetComponent<BoxCollider> () && !isSated) {
+			//Remove apples from food conteiner after small delay.
+			Destroy (fruit, 2f);
+			//Increase number of carrying items.
 			amountOfFood++;
 		}
 	}
 
-	void OnTriggerExit() {
+	/// <summary>
+	/// Raises the trigger exit event.
+	/// Reset boolean flags.
+	/// </summary>
+	void OnTriggerExit ()
+	{
 		IsEating = false;
 		isExplorePosition = false;
 	}
 
-	void OnTriggerStay (Collider collider) {
+	/// <summary>
+	/// Raises the trigger stay event.
+	/// Describes animal behaviour in front of food container..
+	/// </summary>
+	/// <param name="collider">Collider.</param>
+	void OnTriggerStay (Collider collider)
+	{
 		if (collider == feedingArea.GetComponent<BoxCollider> ()) {
 			Destroy (fruit, 2f);
 			IsEating = true;
