@@ -12,6 +12,7 @@ TagManager:
   - mouse
   - owlExplore
   - mouseExplore
+  - owl
   layers:
   - Default
   - TransparentFX

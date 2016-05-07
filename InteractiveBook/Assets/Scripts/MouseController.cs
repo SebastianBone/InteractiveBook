@@ -4,42 +4,56 @@ using System.Collections;
 
 public class MouseController : MonoBehaviour {
 
-	public GameObject [] points;
-	private int destPoint = 0;
+	public GameObject [] mouseExplorepoints;
+	private int randomPosition;
 	private NavMeshAgent agent;
+	private GameObject owl;
+	private float waitTime;
+	bool isExplorePosition;
 
 
 	void Start () {
-		
+		waitTime = Random.Range (5, 10);
 		agent = GetComponent<NavMeshAgent>();
-		points = GameObject.FindGameObjectsWithTag ("mouseExplore");
-		// Disabling auto-braking allows for continuous movement
-		// between points (ie, the agent doesn't slow down as it
-		// approaches a destination point).
-		//agent.autoBraking = false;
-
+		mouseExplorepoints = GameObject.FindGameObjectsWithTag ("mouseExplore");
+		isExplorePosition = false;
+		randomPosition = Random.Range(0, mouseExplorepoints.Length);
+		owl = GameObject.FindGameObjectWithTag ("owl");
 		GotoNextPoint();
 	}
 
-
-	void GotoNextPoint() {
-		// Returns if no points have been set up
-		if (points.Length == 0)
-			return;
-
-		// Set the agent to go to the currently selected destination.
-		agent.destination = points[destPoint].transform.position;
-
-		// Choose the next point in the array as the destination,
-		// cycling to the start if necessary.
-		destPoint = (destPoint + 1) % points.Length;
+	void Update () {
+		
+		GotoNextPoint ();
 	}
 
+	void GotoNextPoint() {
 
-	void Update () {
-		// Choose the next destination point when the agent gets
-		// close to the current one.
-		if (agent.remainingDistance < 0.5f)
-			GotoNextPoint();
+		if (mouseExplorepoints.Length == 0) {
+			return;
+		}
+			
+
+		agent.SetDestination (mouseExplorepoints [randomPosition].transform.position);
+
+		if (isExplorePosition) {
+			waitTime -= Time.deltaTime;
+
+			if (waitTime <= 0) {
+				randomPosition = Random.Range (0, mouseExplorepoints.Length);
+				waitTime = Random.Range (5, 10);
+				isExplorePosition = false;
+			}
+		}
+	}
+
+	void OnTriggerEnter (Collider collider) {
+		if (collider == mouseExplorepoints [randomPosition].GetComponent<SphereCollider> ()) {
+			isExplorePosition = true;
+		}
+		if (collider == owl.GetComponent<BoxCollider> ()) {
+			agent.Stop ();
+			//Destroy (gameObject);
+		}
 	}
 }

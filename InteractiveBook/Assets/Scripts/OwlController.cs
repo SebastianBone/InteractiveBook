@@ -45,10 +45,9 @@ public class OwlController: MonoBehaviour
 	/// The wait time on random explore position.
 	/// </summary>
 	private float waitTime;
-	//private float feedTime = 2f;
+	private float landingStartingTime = 1f;
 	private bool isExplorePosition = false;
 	private bool IsEating = false;
-	private bool isSated = false;
 
 	//Animation
 	private Animator anim;
@@ -75,9 +74,9 @@ public class OwlController: MonoBehaviour
 			anim.Play (idle.name);
 		}
 
-		if (mouse != null && !isSated) {
+		if (mouse != null) {
 			agent.SetDestination (mouse.transform.position);
-			// Run to the food container
+
 			if (!IsEating) {
 				isExplorePosition = false;
 				anim.Play (run.name);
@@ -98,44 +97,36 @@ public class OwlController: MonoBehaviour
 				}
 			}
 		}
-
-		//if (isSated) {
-		//	agent.SetDestination (house.transform.position);
-		//}
 	}
 
 	void OnCollisionEnter (Collision collision) {
-		
+//		if (mouse != null && collision.collider == mouse.GetComponent<BoxCollider> ()) {
+//			agent.height = 1;
+//			agent.Stop ();
+//			amountOfFood++;
+//		}
 	}
 
 	void OnTriggerEnter (Collider collider) {
-		if (collider == owlExplorePositions [randomPosition].GetComponent<SphereCollider> ()) {
-			isExplorePosition = true;
-		}
-
-		//if (collider == feedingArea.GetComponent<BoxCollider> ()) {
-		//	Destroy (fruit);
-		//	amountOfFood++;
-		//}
-	}
-
-	void OnTriggerExit() {
-		IsEating = false;
-		isExplorePosition = false;
-	}
-
-//	void OnTriggerStay (Collider collider) {
-//		if (collider == feedingArea.GetComponent<BoxCollider> ()) {
-//			Destroy (fruit, 2f);
-//			IsEating = true;
-//			feedTime -= Time.deltaTime;
+//		if (collider == owlExplorePositions [randomPosition].GetComponent<SphereCollider> ()) {
 //
-//			if (feedTime <= 0) {
-//				amountOfFood++;
-//				feedTime = 2f;
+//			agent.baseOffset = landingStartingTime;
+//			landingStartingTime -= Time.deltaTime;
+//			if(agent.baseOffset == 0){
+//				agent.baseOffset = 0;
+//				isExplorePosition = true;
 //			}
-//		} else {
-//			IsEating = false;
 //		}
-//	}
+	}
+
+	void OnTriggerStay (Collider collider) {
+		if (collider == owlExplorePositions [randomPosition].GetComponent<SphereCollider> ()) {
+			agent.baseOffset = landingStartingTime;
+			landingStartingTime -= Time.deltaTime;
+			if (agent.baseOffset <= 0) {
+				agent.baseOffset = 0;
+				isExplorePosition = true;
+			}
+		}
+	}
 }
