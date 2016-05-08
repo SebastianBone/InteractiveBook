@@ -96,7 +96,7 @@ public class FoxSzeneController : MonoBehaviour
 		explorePositions = GameObject.FindGameObjectsWithTag ("explore");
 		if (explorePositions != null)
 			randomPosition = Random.Range (0, explorePositions.Length);
-		waitTime = Random.Range (3, 8);
+		waitTime = Random.Range (0, 2);
 		feedingArea = GameObject.Find ("Feeder");
 		house = GameObject.FindGameObjectWithTag ("house");
 	}
@@ -105,6 +105,16 @@ public class FoxSzeneController : MonoBehaviour
 	{
 		
 		fruit = GameObject.FindGameObjectWithTag ("food");
+
+		//If the animal cann not carry any more fruits.
+		if (amountOfFood >= maxAmountOfFood) {
+			if (!GameObject.Find("ChildFox(Clone)"))  {
+				isSated = true;
+			} else {
+				amountOfFood = 0;
+				isSated = false;
+			}
+		}
 
 		// Play animation should run either the animal is not eating orn isn't on position to explore.
 		if (!IsEating && !isExplorePosition) {
@@ -118,6 +128,7 @@ public class FoxSzeneController : MonoBehaviour
 		if (fruit != null && !isSated) {
 			// Set food container as new position to go to.
 			agent.SetDestination (fruit.transform.position);
+			//gameObject.transform.LookAt (fruit.transform.position);
 			// Run to the food container
 			if (!IsEating) {
 				// Food container is not position to explore.
@@ -125,10 +136,7 @@ public class FoxSzeneController : MonoBehaviour
 				anim.Play (run.name);
 			}
 		}
-
-		if (amountOfFood >= maxAmountOfFood && otherAnimal != null) {
-			agent.SetDestination (otherAnimal.transform.position);
-		}
+			
 
 		//If there are positions to explore AND food container is empty (no fruit)..
 		if (explorePositions != null && fruit == null) {
@@ -143,16 +151,13 @@ public class FoxSzeneController : MonoBehaviour
 					// Chose new random position to go to.
 					randomPosition = Random.Range (0, explorePositions.Length);
 					//Reset wait time.
-					waitTime = Random.Range (3, 8);
+					waitTime = Random.Range (0, 2);
 					// Reset explore position flag for 'run' animation purposes. (See line 108)
 					isExplorePosition = false;
 				}
 			}
 		}
-		// If the animal cann not carry any more fruits.
-		if (amountOfFood >= maxAmountOfFood) {
-			isSated = true;
-		}
+
 		// If animals are sated, they should go home.
 		if (isSated) {
 			agent.SetDestination (house.transform.position);
@@ -169,7 +174,8 @@ public class FoxSzeneController : MonoBehaviour
 		//Look if there are some exploration places near by.
 		if (collider == explorePositions [randomPosition].GetComponent<SphereCollider> ()) {
 			//Explore them!
-			isExplorePosition = true;
+			if (!isSated)
+				isExplorePosition = true;
 		}
 
 		//If Animal is on the way home sated.
@@ -177,14 +183,15 @@ public class FoxSzeneController : MonoBehaviour
 			// Make some babies.
 			Instantiate (animalChild, transform.position, Quaternion.identity);
 			// Reset
-			amountOfFood = 0;
 			isSated = false;
-			IsEating = false;
+			amountOfFood = 0;
+
+			//IsEating = false;
 		}
 		// Let's eat some apples.
 		if (collider == feedingArea.GetComponent<BoxCollider> () && !isSated) {
 			//Remove apples from food conteiner after small delay.
-			Destroy (fruit, 2f);
+			Destroy (fruit);
 			//Increase number of carrying items.
 			amountOfFood++;
 		}

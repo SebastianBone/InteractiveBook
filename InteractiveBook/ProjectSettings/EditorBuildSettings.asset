@@ -7,5 +7,9 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: Assets/Scenes/Testscene.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/develop.unity
+  - enabled: 0
+    path: Assets/Scenes/FoxyScene/FoxyScene.unity
+  - enabled: 1
+    path: Assets/Scenes/owl_scene.unity

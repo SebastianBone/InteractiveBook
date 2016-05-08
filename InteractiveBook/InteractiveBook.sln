@@ -5,6 +5,8 @@ Project("{8223376F-99B5-2CCA-980B-603AAF2A0ADA}") = "InteractiveBook", "Assembly
 EndProject
 Project("{8223376F-99B5-2CCA-980B-603AAF2A0ADA}") = "InteractiveBook", "Assembly-CSharp-Editor.csproj", "{602A9A01-0A44-9A95-FDF9-266161CB3EEE}"
 EndProject
+Project("{8223376F-99B5-2CCA-980B-603AAF2A0ADA}") = "InteractiveBook", "Assembly-UnityScript-Editor-firstpass.unityproj", "{99F14015-84D3-5882-2695-2108796CE152}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{602A9A01-0A44-9A95-FDF9-266161CB3EEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{602A9A01-0A44-9A95-FDF9-266161CB3EEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{602A9A01-0A44-9A95-FDF9-266161CB3EEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99F14015-84D3-5882-2695-2108796CE152}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99F14015-84D3-5882-2695-2108796CE152}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99F14015-84D3-5882-2695-2108796CE152}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99F14015-84D3-5882-2695-2108796CE152}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

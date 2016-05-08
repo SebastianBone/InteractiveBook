@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/develop.unity
+- path: Assets/Scenes/FoxyScene/FoxyScene.unity
   isLoaded: 1
   isActive: 1

@@ -688,24 +688,28 @@ Prefab:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 19524968, guid: 51055c26f5c944d99ad9d36810a38eea, type: 2}
-      propertyPath: avoidancePriority
-      value: 50
+      propertyPath: m_Radius
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 19524968, guid: 51055c26f5c944d99ad9d36810a38eea, type: 2}
-      propertyPath: m_AutoTraverseOffMeshLink
+      propertyPath: m_Speed
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 19524968, guid: 51055c26f5c944d99ad9d36810a38eea, type: 2}
+      propertyPath: m_Acceleration
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 19524968, guid: 51055c26f5c944d99ad9d36810a38eea, type: 2}
+      propertyPath: m_AngularSpeed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 19524968, guid: 51055c26f5c944d99ad9d36810a38eea, type: 2}
+      propertyPath: m_AutoBraking
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5431248, guid: 51055c26f5c944d99ad9d36810a38eea, type: 2}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5431248, guid: 51055c26f5c944d99ad9d36810a38eea, type: 2}
-      propertyPath: m_CollisionDetection
+    - target: {fileID: 19524968, guid: 51055c26f5c944d99ad9d36810a38eea, type: 2}
+      propertyPath: m_Height
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5431248, guid: 51055c26f5c944d99ad9d36810a38eea, type: 2}
-      propertyPath: m_Constraints
-      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51055c26f5c944d99ad9d36810a38eea, type: 2}
@@ -1182,7 +1186,7 @@ GameObject:
   - 4: {fileID: 1245651168}
   m_Layer: 0
   m_Name: Positions
-  m_TagString: explore
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
