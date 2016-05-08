@@ -12,14 +12,6 @@ public class OwlController: MonoBehaviour
 	/// The mouse.
 	/// </summary>
 	public GameObject mouse;
-	/// <summary>
-	/// Initial amount of food.
-	/// </summary>
-	public int amountOfFood = 0;
-	/// <summary>
-	/// The max amount of food.
-	/// </summary>
-	public int maxAmountOfFood = 10;
 
 	// Animation name getter.
 	public AnimationClip idle;
@@ -48,7 +40,7 @@ public class OwlController: MonoBehaviour
 	private float landingStartingTime = 2f;
 	private bool isExplorePosition = false;
 	private bool IsEating = false;
-	private bool isStartingLanding;
+	private bool isStarting;
 
 	//Animation
 	private Animator anim;
@@ -62,13 +54,12 @@ public class OwlController: MonoBehaviour
 		if (owlExplorePositions != null)
 			randomPosition = Random.Range (0, owlExplorePositions.Length);
 		waitTime = Random.Range (3, 8);
-		isStartingLanding = true;
+		isStarting = true;
 	}
 
 	void Update () {
 
-		mouse = GameObject.FindGameObjectWithTag ("mouse");
-
+		mouse = GameObject.Find ("Mouse(Clone)");
 
 		if (!IsEating && !isExplorePosition) {
 			anim.Play (run.name);
@@ -77,6 +68,9 @@ public class OwlController: MonoBehaviour
 		}
 
 		if (mouse != null) {
+			if (isStarting) {
+				Starting ();
+			}
 			agent.SetDestination (mouse.transform.position);
 
 			if (!IsEating) {
@@ -87,16 +81,8 @@ public class OwlController: MonoBehaviour
 
 		if (owlExplorePositions != null && mouse == null) {
 
-			if (isStartingLanding) {
-				landingStartingTime += Time.deltaTime;
-
-				Debug.Log (agent.baseOffset);
-				if (agent.baseOffset > 2f) {
-					agent.baseOffset = 2;
-					isStartingLanding = false;
-				} else {
-					agent.baseOffset = landingStartingTime;	
-				}
+			if (isStarting) {
+				Starting ();
 			}
 				
 			agent.SetDestination (owlExplorePositions [randomPosition].transform.position);			
@@ -107,37 +93,67 @@ public class OwlController: MonoBehaviour
 					randomPosition = Random.Range (0, owlExplorePositions.Length);
 					waitTime = Random.Range (3, 8);
 					isExplorePosition = false;
-					isStartingLanding = true;
+					isStarting = true;
 				}
 			}
 		}
 	}
 
 	void OnCollisionEnter (Collision collision) {
-//		if (mouse != null && collision.collider == mouse.GetComponent<BoxCollider> ()) {
-//			agent.height = 1;
-//			agent.Stop ();
-//			amountOfFood++;
-//		}
+		
 	}
 
 	void OnTriggerEnter (Collider collider) {
+		if (collider == owlExplorePositions [randomPosition].GetComponent<SphereCollider> ()) {
 
+		}
+
+		if (mouse!=null && collider == mouse.GetComponent<BoxCollider> ()) {
+			Landing ();
+		}
+
+	}
+
+	void OnTriggerExit (Collider collider) {
+		if (collider == owlExplorePositions [randomPosition].GetComponent<SphereCollider> ()) {
+			isStarting = true;
+		}
 	}
 
 	void OnTriggerStay (Collider collider) {
 		if (collider == owlExplorePositions [randomPosition].GetComponent<SphereCollider> ()) {
+			Landing ();
+		}
+		if (mouse!=null && collider == mouse.GetComponent<BoxCollider> ()) {
+			Debug.Log ("Collide with Mouse");
+			Landing ();
+			Destroy (mouse, 2f);
+		}
+	}
 
+	void Landing(){
+		Debug.Log (landingStartingTime);
+		landingStartingTime -= Time.deltaTime;
+		if (agent.baseOffset <= 0) {
+			agent.baseOffset = 0;
+			isExplorePosition = true;
+			landingStartingTime = 0;
+			isStarting = true;
+		} else {
+			agent.baseOffset = landingStartingTime;
 
-			landingStartingTime -= Time.deltaTime;
-			if (agent.baseOffset <= 0) {
-				agent.baseOffset = 0;
-				isExplorePosition = true;
-				isStartingLanding = false;
-			} else {
-				agent.baseOffset = landingStartingTime;
-			
-			}
+		}
+	}
+
+	void Starting(){
+		Debug.Log (landingStartingTime);
+		landingStartingTime += Time.deltaTime;
+
+		if (agent.baseOffset > 2f) {
+			agent.baseOffset = 2;
+			isStarting = false;
+		} else {
+			agent.baseOffset = landingStartingTime;	
 		}
 	}
 }

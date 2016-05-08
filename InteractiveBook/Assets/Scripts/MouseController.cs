@@ -10,6 +10,7 @@ public class MouseController : MonoBehaviour {
 	private GameObject owl;
 	private float waitTime;
 	bool isExplorePosition;
+	bool isCatched = false;
 
 
 	void Start () {
@@ -33,16 +34,17 @@ public class MouseController : MonoBehaviour {
 			return;
 		}
 			
+		if (!isCatched) {
+			agent.SetDestination (mouseExplorepoints [randomPosition].transform.position);
 
-		agent.SetDestination (mouseExplorepoints [randomPosition].transform.position);
+			if (isExplorePosition) {
+				waitTime -= Time.deltaTime;
 
-		if (isExplorePosition) {
-			waitTime -= Time.deltaTime;
-
-			if (waitTime <= 0) {
-				randomPosition = Random.Range (0, mouseExplorepoints.Length);
-				waitTime = Random.Range (5, 10);
-				isExplorePosition = false;
+				if (waitTime <= 0) {
+					randomPosition = Random.Range (0, mouseExplorepoints.Length);
+					waitTime = Random.Range (5, 10);
+					isExplorePosition = false;
+				}
 			}
 		}
 	}
@@ -52,8 +54,8 @@ public class MouseController : MonoBehaviour {
 			isExplorePosition = true;
 		}
 		if (collider == owl.GetComponent<BoxCollider> ()) {
-			agent.Stop ();
-			//Destroy (gameObject);
+			agent.SetDestination (transform.position);
+			isCatched = true;
 		}
 	}
 }
